@@ -11,7 +11,7 @@ namespace WebPortfolio.Models.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=TURGUT-SOFUYEV\\SQLEXPRESS;Initial Catalog=NewWebPortfolio2;Integrated Security=True;Trust Server Certificate=True;");
+            optionsBuilder.UseSqlServer(""); //Buraya connection string elave edin
         }
 
     }
