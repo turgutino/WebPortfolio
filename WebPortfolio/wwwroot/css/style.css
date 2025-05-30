@@ -1,0 +1,107 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    background-image: url(./background\ picture.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    width: 75%; /* Artırıldı */
+    max-width: 900px; /* Artırıldı */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 50px; /* Artırıldı */
+    border-radius: 15px; /* Artırıldı */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7); /* Artırıldı */
+}
+
+    .center .avatar img {
+        border-radius: 50%;
+        width: 250px; /* Artırıldı */
+        height: 250px; /* Artırıldı */
+        margin-bottom: 25px; /* Artırıldı */
+        border: 4px solid white; /* Artırıldı */
+    }
+
+.content h1 {
+    font-size: 40px; /* Artırıldı */
+    margin-bottom: 12px; /* Artırıldı */
+}
+
+.content h2 {
+    font-size: 28px; /* Artırıldı */
+    margin-bottom: 12px; /* Artırıldı */
+}
+
+.content p {
+    font-size: 20px; /* Artırıldı */
+    line-height: 1.8; /* Artırıldı */
+    margin: 20px auto; /* Artırıldı */
+    width: 90%; /* Artırıldı */
+}
+
+.content h3 {
+    font-size: 22px; /* Artırıldı */
+    margin-top: 30px; /* Artırıldı */
+}
+
+div.social {
+    margin-top: 30px; /* Artırıldı */
+}
+
+    div.social i {
+        padding: 0 20px; /* Artırıldı */
+        font-size: 45px; /* Artırıldı */
+        color: rgba(255,255,255,0.6);
+        transition: all 0.3s ease;
+    }
+
+        div.social i:hover {
+            color: white;
+            transform: scale(1.3); /* Artırıldı */
+        }
+
+@media screen and (max-width: 768px) {
+    .center {
+        width: 95%; /* Artırıldı */
+        padding: 40px; /* Artırıldı */
+    }
+
+        .center .avatar img {
+            width: 160px; /* Artırıldı */
+            height: 160px; /* Artırıldı */
+        }
+
+    .content h1 {
+        font-size: 32px; /* Artırıldı */
+    }
+
+    .content h2 {
+        font-size: 22px; /* Artırıldı */
+    }
+
+    .content p {
+        font-size: 16px; /* Artırıldı */
+        width: 100%; /* Artırıldı */
+    }
+
+    .content h3 {
+        font-size: 18px; /* Artırıldı */
+    }
+
+    div.social i {
+        font-size: 35px; /* Artırıldı */
+    }
+}

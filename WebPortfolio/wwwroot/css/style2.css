@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  .login-box {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .login-box img.admin-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 25px;
+  }
+  
+  .login-box h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 30px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  form input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  form input:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    outline: none;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #ff8c00, #ff4f00);
+    background-size: 200%;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-position 0.4s ease;
+  }
+  
+  form button:hover {
+    background-position: right;
+  }
+  

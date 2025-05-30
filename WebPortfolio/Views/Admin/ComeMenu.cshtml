@@ -1,0 +1,63 @@
+﻿@model WebPortfolio.Models.Entities.Menu
+
+@{
+    ViewData["Title"] = "Update Menu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Update Menu</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("MenuUpdate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group mb-3">
+                    @Html.LabelFor(x => x.Id)
+                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(x => x.ProfilPhoto)
+                    <input type="file" name="ProfilPhotoFile" class="form-control" />
+                    @Html.ValidationMessageFor(x => x.ProfilPhoto, "", new { @class = "text-danger" })
+
+                    @* You can show the current image if you want: *@
+                    @if (!string.IsNullOrEmpty(Model.ProfilPhoto))
+                    {
+                        <img src="@Model.ProfilPhoto" alt="Profile Photo" style="max-width: 150px; margin-top:10px;" />
+                    }
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(x => x.Name)
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Enter name" })
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(x => x.Position)
+                    @Html.TextBoxFor(x => x.Position, new { @class = "form-control", placeholder = "Enter position" })
+                    @Html.ValidationMessageFor(x => x.Position, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(x => x.Description)
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = 4, placeholder = "Enter description" })
+                    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-4">
+                    @Html.LabelFor(x => x.Contact)
+                    @Html.TextBoxFor(x => x.Contact, new { @class = "form-control", placeholder = "Enter contact info" })
+                    @Html.ValidationMessageFor(x => x.Contact, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-block">Update Menu</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

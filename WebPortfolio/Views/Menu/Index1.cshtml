@@ -1,0 +1,8 @@
+﻿@model List<WebPortfolio.Models.Entities.Icon>
+
+<div class="social">
+    @foreach (var item in Model)
+    {
+        <a href="@item.Link" target="_blank" rel="noopener noreferrer"><i class="@item.Name"></i></a>
+    }
+</div>

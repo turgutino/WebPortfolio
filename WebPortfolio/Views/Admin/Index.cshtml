@@ -1,0 +1,25 @@
+﻿@using WebPortfolio.Models.Entities
+@using WebPortfolio.Models.Data
+@model List<Menu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Update</th>
+    </tr>
+    @foreach(var item in Model){
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a href="/Admin/ComeMenu/@item.Id" class="btn btn-primary">Update</a></td>
+        </tr>
+    }
+    
+</table>
+

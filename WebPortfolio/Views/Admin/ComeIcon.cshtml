@@ -1,0 +1,35 @@
+﻿@using WebPortfolio.Models.Entities
+@model Icon
+@{
+    ViewData["Title"] = "Update Icon";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+@using (Html.BeginForm("UpdateIcon", "Admin", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Id, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Enter icon CSS class (e.g., fa fa-home)", required = "required" })
+        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Link, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.Link, new { @class = "form-control", placeholder = "Enter icon URL", type = "url", required = "required" })
+        @Html.ValidationMessageFor(x => x.Link, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Update Icon</button>
+    <a href="@Url.Action("IconList", "Admin")" class="btn btn-secondary">Cancel</a>
+}

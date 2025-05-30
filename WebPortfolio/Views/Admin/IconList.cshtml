@@ -1,0 +1,70 @@
+﻿@using WebPortfolio.Models.Entities
+@model List<Icon>
+
+@{
+    ViewData["Title"] = "Icon List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mb-3">
+    <a href="/Admin/AddIcon" class="btn btn-success">
+        <i class="fa fa-plus"></i> Add New Icon
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Icon</th>
+                <th scope="col">Icon Class</th>
+                <th scope="col" style="width: 160px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var icon in Model)
+            {
+                <tr>
+                    <td>@icon.Id</td>
+                    <td><i class="@icon.Name" style="font-size: 24px;"></i></td>
+                    <td>@icon.Name</td>
+                    <td>
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a href="/Admin/ComeIcon/@icon.Id" class="btn btn-primary btn-sm" title="Update">
+                                <i class="fa fa-edit"></i> Update
+                            </a>
+
+                            <!-- Trigger Modal -->
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@icon.Id">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteModal-@icon.Id" tabindex="-1" aria-labelledby="deleteModalLabel-@icon.Id" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-danger text-white">
+                                            <h5 class="modal-title" id="deleteModalLabel-@icon.Id">Confirm Deletion</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete the icon "<strong>@icon.Name</strong>"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <form method="post" action="/Admin/DeleteIcon/@icon.Id">
+                                                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

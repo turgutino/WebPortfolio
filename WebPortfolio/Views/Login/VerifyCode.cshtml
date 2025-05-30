@@ -1,0 +1,168 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Two-Factor Verification</title>
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #4A90E2, #145DA0);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verify-wrapper {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 25px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+            .verify-wrapper h2 {
+                margin-bottom: 10px;
+                color: #333;
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            .verify-wrapper p {
+                color: #666;
+                margin-bottom: 20px;
+            }
+
+            .verify-wrapper i {
+                font-size: 40px;
+                color: #4A90E2;
+                margin-bottom: 15px;
+            }
+
+        .code-inputs {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+            .code-inputs input {
+                width: 45px;
+                height: 50px;
+                text-align: center;
+                font-size: 24px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                outline: none;
+                transition: 0.3s;
+                color: black;
+            }
+
+                .code-inputs input:focus {
+                    border-color: #4A90E2;
+                    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+                }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            background-color: #F97402;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #d76100;
+            }
+
+        .error {
+            color: red;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputs = document.querySelectorAll(".digit-input");
+            const form = document.getElementById("codeForm");
+            const hiddenInput = document.getElementById("fullCode");
+
+            // Fokus keçidi
+            inputs.forEach((input, index) => {
+                input.addEventListener("input", () => {
+                    if (input.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener("keydown", (e) => {
+                    if (e.key === "Backspace" && !input.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Form submit zamanı inputları birləşdir
+            form.addEventListener("submit", function (e) {
+                let code = '';
+                inputs.forEach(input => {
+                    code += input.value;
+                });
+
+                if (code.length !== 6) {
+                    e.preventDefault();
+                    alert("Please enter all 6 digits of the verification code.");
+                    return;
+                }
+
+                hiddenInput.value = code;
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div class="verify-wrapper">
+        <i class="fas fa-shield-alt"></i>
+        <h2>Two-Factor Authentication</h2>
+        <p>Enter the verification code from your authentication app.</p>
+
+        <form asp-action="VerifyCode" method="post" id="codeForm">
+            <div class="code-inputs">
+                @for (int i = 0; i < 6; i++)
+                {
+                    <input type="text" class="digit-input" maxlength="1" required />
+                }
+            </div>
+
+            <input type="hidden" name="code" id="fullCode" />
+
+            <button type="submit">Verify</button>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="error">
+                    @Html.ValidationSummary()
+                </div>
+            }
+        </form>
+    </div>
+</body>
+</html>
