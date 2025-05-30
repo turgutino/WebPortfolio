@@ -23,7 +23,7 @@
                     <input type="file" name="ProfilPhotoFile" class="form-control" />
                     @Html.ValidationMessageFor(x => x.ProfilPhoto, "", new { @class = "text-danger" })
 
-                    @* You can show the current image if you want: *@
+               
                     @if (!string.IsNullOrEmpty(Model.ProfilPhoto))
                     {
                         <img src="@Model.ProfilPhoto" alt="Profile Photo" style="max-width: 150px; margin-top:10px;" />

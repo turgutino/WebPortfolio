@@ -13,7 +13,6 @@
   <ItemGroup>
     <None Include="wwwroot\css\admin.jpg" />
     <None Include="wwwroot\css\background picture.jpg" />
-    <None Include="wwwroot\css\profilpicture.jpg" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\style2.css" />
   </ItemGroup>
@@ -25,6 +24,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

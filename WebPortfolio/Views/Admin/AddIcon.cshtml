@@ -7,7 +7,7 @@
 
 <h2 class="mb-4">@ViewData["Title"]</h2>
 
-@using (Html.BeginForm("AddIcon", "Admin", FormMethod.Post, new { @class = "needs-validation" }))  @* novalidate silindi ki, HTML5 validation işləsin *@
+@using (Html.BeginForm("AddIcon", "Admin", FormMethod.Post, new { @class = "needs-validation" })) 
 {
     @Html.AntiForgeryToken()
 
