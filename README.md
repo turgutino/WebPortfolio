@@ -14,6 +14,6 @@ WebPortfolio — şəxsi portfolionu təqdim etmək və təhlükəsiz şəkildə
 🛠️ Texnologiyalar
 
 - Backend: `.NET` / `ASP.NET Core`
-- Frontend: `HTML`, `CSS`, `JavaScript` *(və varsa əlavə texnologiyalar, məsələn: React, Razor Pages)*
+- Frontend: `HTML`, `CSS`, `JavaScript` 
 - Database: `SQL Server` / `Entity Framework Core`
 
